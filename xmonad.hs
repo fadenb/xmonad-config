@@ -84,13 +84,6 @@ bsxConfig h = defaultConfig
       -- lock the screen with xscreensaver
       , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -blur 0x3 /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png")
 
-
-      -- suspend 2 ram
-      , ((0,0x1008ff2f), spawn "xlock -mode pyro & sleep 5 && sudo s2ram")
-
-      -- call users monitr swithcing script
-      , ((0,0x1008ff41), spawn "~/monitor.sh")
-
       -- some programs to start with keybindings.
       , ((modm .|. shiftMask, xK_f), spawn "firefox")
       , ((modm .|. shiftMask, xK_i), spawn "xcalib -i -a")
@@ -127,25 +120,6 @@ bsxConfig h = defaultConfig
      
 	  -- XF86AudioMute
       , ((0            , 0x1008ff12), spawn "amixer set Master toggle")
-      -- , ((0            , 0x1008ff12), spawn "sh ~/scripts/toggleVolume.sh") -- No unmute
-    
-	  -- XF86Sleep
-      -- , ((0            , 0x1008FF2F), spawn "sudo -K;gksudo s2disk")
-      
-	  -- XF86Support (missbraucht als screenshot)
-	  --, ((0            , 0x1008FF7E), spawn "sh ~/scripts/screenshot.sh")
-      -- , ((0            , 0x1008FF7E), spawn "sh ~/scripts/screenshot.sh")
-      
-	  -- XF86Shop (missbraucht als gtk-chtheme)
-      -- , ((0            , 0x1008FF36), spawn "gtk-chtheme")
-      
-	  -- Xlock
-      -- , ((0            , 0x1008ff41), spawn "xlock")
-      -- , ((0            , 0x1008ff42), spawn "urxvt")
-      -- , ((0            , 0x1008ff18), spawn "iceweasel")
-      
-	  -- XF86Mail
-      -- , ((0            , 0x1008ff19), spawn "claws-mail")
       ]
 
 myManageHook = composeAll
