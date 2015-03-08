@@ -117,9 +117,11 @@ bsxConfig h = defaultConfig
       , ((modm .|. shiftMask, xK_Down ), sendMessage $ Swap D)
       -- da ich xmobar nicht wegschalten will    , ((modm .|. shiftMask, xK_b    ), sendMessage ToggleStruts)
 
+      , ((0            , 0x1008ff03), spawn "xbacklight -10")
+      , ((0            , 0x1008ff02), spawn "xbacklight +10")
+
       -- XF86AudioLowerVolume
       , ((0            , 0x1008ff11), spawn "amixer set Master 2%-")
-      
 	  -- XF86AudioRaiseVolume
       , ((0            , 0x1008ff13), spawn "amixer set Master unmute;amixer set Master 2%+")
      
