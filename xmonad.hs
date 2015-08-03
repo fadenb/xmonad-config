@@ -56,7 +56,7 @@ bsxConfig h = defaultConfig
        , manageHook         = manageHook defaultConfig <+> myManageHook <+> manageDocks <+> composeOne [isFullscreen -?> doFullFloat ]
        , startupHook        = setWMName "LG3D"
        --, layoutHook         = avoidStrutsOn [D] (windowNavigation (smartBorders (named "hsplit" (hintedTile Tall) ||| named "vsplit" (hintedTile Wide))))
-       , layoutHook         = avoidStrutsOn [D] (windowNavigation (smartBorders (onWorkspace "4:com" (IM (1%6) (Role "buddy_list")) (named "hsplit" (hintedTile Tall) ||| named "vsplit" (hintedTile Wide) ||| named "tabbed" (tabbed shrinkText defaultTheme)))))
+       , layoutHook         = avoidStrutsOn [D] (windowNavigation (smartBorders (onWorkspace "4:com" (IM (1%6) (Role "roster")) (named "hsplit" (hintedTile Tall) ||| named "vsplit" (hintedTile Wide) ||| named "tabbed" (tabbed shrinkText defaultTheme)))))
 
        }   
   where
@@ -82,13 +82,14 @@ bsxConfig h = defaultConfig
       , ((modm .|. shiftMask, xK_w), spawn "feh --randomize --bg-fill ~/documents/wallpaper")
 
       -- lock the screen with xscreensaver
-      , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -blur 0x3 /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png")
+      , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -blur 0x8 /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png")
+      , ((modm .|. shiftMask, xK_o), spawn "xset +dpms && scrot /tmp/screen.png && i3lock -i /tmp/screen.png")
 
       -- some programs to start with keybindings.
       , ((modm .|. shiftMask, xK_f), spawn "firefox")
       , ((modm .|. shiftMask, xK_i), spawn "xcalib -i -a")
       , ((modm .|. shiftMask, xK_m), spawn "claws-mail")
-      , ((modm .|. shiftMask, xK_p), spawn "pidgin")
+      , ((modm .|. shiftMask, xK_p), spawn "gajim")
       , ((modm .|. shiftMask, xK_b), spawn "chromium-browser")
       , ((modm .|. shiftMask, xK_v), spawn "pgrep openvpn; if [ $? -eq 0 ]; then sudo /etc/init.d/openvpn stop; else sudo /etc/init.d/openvpn start; fi")
       
@@ -126,7 +127,7 @@ myManageHook = composeAll
     [ className =? "Claws-mail" --> doF(W.shift "3:mail")
     , className =? "Firefox" --> doF(W.shift "2:web")
     , (className =? "Firefox" <&&> resource =? "Dialog") --> doFloat
-    , className =? "Pidgin" --> doF(W.shift "4:com")
+    , className =? "gajim" --> doF(W.shift "4:com")
     , className =? "Google-chrome" --> doF(W.shift "2:web")
     , className =? "Choqok" --> doF(W.shift "4:com")
     -- , className =? "Kaffeine" --> doF(W.shift "6:video")
