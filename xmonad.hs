@@ -82,7 +82,8 @@ bsxConfig h = defaultConfig
       , ((modm .|. shiftMask, xK_w), spawn "feh --randomize --bg-fill ~/documents/wallpaper")
 
       -- lock the screen with xscreensaver
-      , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -blur 0x8 /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png")
+      -- , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && scrot /tmp/screen_locked.png && convert /tmp/screen_locked.png -blur 0x8 /tmp/screen_locked2.png && i3lock -i /tmp/screen_locked2.png")
+      , ((modm .|. shiftMask, xK_l), spawn "xset +dpms && ~/.xmonad/i3lock.sh")
       , ((modm .|. shiftMask, xK_o), spawn "xset +dpms && scrot /tmp/screen.png && i3lock -i /tmp/screen.png")
 
       -- some programs to start with keybindings.
